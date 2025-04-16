@@ -26,10 +26,19 @@ def log_thread_exceptions(args):
     logger.debug(args)
     run_event.clear()
 
+def test_logger(logger):
+    logger.debug("Debug.") 
+    logger.info("Info.")
+    logger.warning("Warning.")
+    logger.error("Error.")
+    logger.critical("Critical.")
+
 def main():
 
     signal.signal(signal.SIGINT, signal_handler)
-    logger.info('main Started')
+    logger.debug('Main started...')
+    # test_logger(logger)
+
     run_event.set()
 
     SSH_LOG_PATH = "log_test.txt"
