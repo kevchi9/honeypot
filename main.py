@@ -74,7 +74,5 @@ def main():
 
 if __name__ == '__main__':
     logger = cf.CustomFormatter.init_logger()
-
     run_event = threading.Event()
-    
     main()

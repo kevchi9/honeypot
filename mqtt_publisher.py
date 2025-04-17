@@ -4,6 +4,9 @@ import json
 import logging
 
 class Services(Enum):
+    """
+    Enumrator used to map log paths to services.
+    """
     SSH = "/logs/ssh.log"
     FTP = "/logs/ftp.log"
     RDP = "/logs/rdp.log"
@@ -11,6 +14,9 @@ class Services(Enum):
     TEST = "log_test.txt"
 
 class Topics(Enum):
+    """
+    Enumerator used to map services and MQTT topics.
+    """
     SSH = "logs/ssh"
     FTP = "logs/ftp"
     RDP = "logs/rdp"
@@ -18,11 +24,23 @@ class Topics(Enum):
     TEST = "log_test"
 
 def get_service_from_log(log_path: str) -> Services:
+    """
+    Takes a string rapresenting the log file path.
+
+    ### Returns
+    a `Services` enumerator.
+    """
     for item in Services:
         if item.value == log_path:
             return item
         
 def get_topic_from_service(service: Services) -> Topics:
+    """
+    Takes a `Services` enumerator rapresenting the service.
+
+    ### Returns
+    a `Topics` enumerator.
+    """
     for item in Topics:
         if service.name == item.name:
             return item
@@ -37,7 +55,7 @@ def on_publish(client, userdata, mid, reason_code, properties):
     try:
         userdata.remove(mid)
     except KeyError as e:
-        raise e
+        print(e)
 
 def on_log(client, userdata, paho_log_level, messages, logger):
     if paho_log_level == mqtt.LogLevel.MQTT_LOG_ERR:
@@ -69,6 +87,12 @@ async def connect_and_send_to_broker(server_ip: str, port: int, log_path, logger
     mqttc.disconnect()
 
 def start_client() -> mqtt.Client:
+    """
+    Creates the MQTT client istance.
+
+    ### Returns
+    the MQTT client.
+    """
     mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, "publisher_test", clean_session=True)
     return mqttc
 
@@ -76,12 +100,17 @@ def build_msg(client_id: bytes, msg: str, service: Services, logger: logging.Log
     """
     Creates a json structure with the `msg` parameter in the `payload` field.
     
-    Returns a `str` representing the json object.
+    ### Returns 
+    a `str` representing the json object.
     """
-
     return json.dumps({"pulisher_id": client_id.decode("utf-8") , "payload": msg, "service": service.name})
 
 def publish_msg(mqttc: mqtt.Client, msg: list[str], service: Services, unacked_publish: set, logger: logging.Logger):
+    """
+    Takes an MQTT `client`, a `list of strings`, a `Services` enumerator, a `set` of unacked published messages and a logger.
+    
+    Publishes the messages contained in the list of strings, appending the `service` value to the message. 
+    """
     for item in msg:
         formatted_msg = build_msg(mqttc._client_id, item, service, logger)
         topic = get_topic_from_service(service)

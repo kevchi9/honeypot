@@ -1,0 +1,29 @@
+2025-04-17T05:34:07.458704Z [HoneyPotSSHTransport,8,10.0.21.1] Remote SSH version: SSH-2.0-OpenSSH_for_Windows_9.5
+2025-04-17T05:34:07.461196Z [HoneyPotSSHTransport,8,10.0.21.1] SSH client hassh fingerprint: 701158e75b508e76f0410d5d22ef9df0
+2025-04-17T05:34:07.462455Z [cowrie.ssh.transport.HoneyPotSSHTransport#debug] kex alg=b'curve25519-sha256' key alg=b'ssh-ed25519'
+2025-04-17T05:34:07.462501Z [cowrie.ssh.transport.HoneyPotSSHTransport#debug] outgoing: b'aes128-ctr' b'hmac-sha2-256' b'none'
+2025-04-17T05:34:07.462534Z [cowrie.ssh.transport.HoneyPotSSHTransport#debug] incoming: b'aes128-ctr' b'hmac-sha2-256' b'none'
+2025-04-17T05:34:12.045693Z [cowrie.ssh.transport.HoneyPotSSHTransport#debug] NEW KEYS
+2025-04-17T05:34:12.047337Z [cowrie.ssh.transport.HoneyPotSSHTransport#debug] starting service b'ssh-userauth'
+2025-04-17T05:34:12.048230Z [cowrie.ssh.userauth.HoneyPotSSHUserAuthServer#debug] b'root' trying auth b'none'
+2025-04-17T05:34:16.586459Z [cowrie.ssh.userauth.HoneyPotSSHUserAuthServer#debug] b'root' trying auth b'password'
+2025-04-17T05:34:16.586789Z [HoneyPotSSHTransport,8,10.0.21.1] login attempt [b'root'/b'diomeda'] succeeded
+2025-04-17T05:34:16.587040Z [HoneyPotSSHTransport,8,10.0.21.1] Initialized emulated server as architecture: linux-x64-lsb
+2025-04-17T05:34:16.587173Z [cowrie.ssh.userauth.HoneyPotSSHUserAuthServer#debug] b'root' authenticated with b'password'
+2025-04-17T05:34:16.587250Z [cowrie.ssh.transport.HoneyPotSSHTransport#debug] starting service b'ssh-connection'
+2025-04-17T05:34:16.592389Z [cowrie.ssh.connection.CowrieSSHConnection#debug] got channel b'session' request
+2025-04-17T05:34:16.592792Z [cowrie.ssh.session.HoneyPotSSHSession#info] channel open
+2025-04-17T05:34:16.592864Z [cowrie.ssh.connection.CowrieSSHConnection#debug] got global b'no-more-sessions@openssh.com' request
+2025-04-17T05:34:16.651132Z [twisted.conch.ssh.session#info] Handling pty request: b'xterm-256color' (57, 165, 640, 480)
+2025-04-17T05:34:16.651276Z [SSHChannel session (0) on SSHService b'ssh-connection' on HoneyPotSSHTransport,8,10.0.21.1] Terminal Size: 165 57
+2025-04-17T05:34:16.651649Z [twisted.conch.ssh.session#info] Getting shell
+2025-04-17T05:34:16.816855Z [HoneyPotSSHTransport,8,10.0.21.1] CMD:
+2025-04-17T05:37:16.658592Z [twisted.conch.ssh.session#info] exitCode: 1
+2025-04-17T05:37:16.658891Z [cowrie.ssh.connection.CowrieSSHConnection#debug] sending request b'exit-status'
+2025-04-17T05:37:16.659175Z [-] Closing TTY Log: var/lib/cowrie/tty/9d1e0e2d9459d06523ad13e28a4093c2316baafe7aec5b25f30eba2e113599c4 after 180.0 seconds
+2025-04-17T05:37:16.659312Z [cowrie.ssh.connection.CowrieSSHConnection#info] sending close 0
+2025-04-17T05:37:16.662071Z [cowrie.ssh.session.HoneyPotSSHSession#info] remote close
+2025-04-17T05:37:16.662245Z [HoneyPotSSHTransport,8,10.0.21.1] Got remote error, code 11 reason: b'disconnected by user'
+2025-04-17T05:37:16.662434Z [HoneyPotSSHTransport,8,10.0.21.1] avatar root logging out
+2025-04-17T05:37:16.662475Z [cowrie.ssh.transport.HoneyPotSSHTransport#info] connection lost
+2025-04-17T05:37:16.662504Z [HoneyPotSSHTransport,8,10.0.21.1] Connection lost after 189.2 seconds
