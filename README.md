@@ -14,14 +14,17 @@ Another idea is to deploy some containers with vulnerables softwares in order to
 
 The following is a first draft of the project:
 
-![Screenshot 2025-04-15 161952](https://github.com/user-attachments/assets/3256e326-296a-4083-b134-45b62f099837)
+![immagine](https://github.com/user-attachments/assets/9fd28086-2c0e-4b81-a697-2dc9319dffa3)
 
 ## Components
 
-- Log Collector 
+- Log Collector
+  - Log Collector
+  - Log Parser
+  - MQTT Publisher
 - Container Handler
 - Connection Listener
-- MQTT Publisher
+
 
 ## Log Collector
 
