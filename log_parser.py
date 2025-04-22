@@ -70,5 +70,3 @@ def parse_log(line: str, log_type: CowrieSearchStrings, logger: logging.Logger) 
     else:
         pass
     return crafted
-
-                

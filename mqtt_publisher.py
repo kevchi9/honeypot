@@ -114,6 +114,6 @@ def publish_msg(mqttc: mqtt.Client, msg: list[str], service: Services, unacked_p
     for item in msg:
         formatted_msg = build_msg(mqttc._client_id, item, service, logger)
         topic = get_topic_from_service(service)
-        msg_info = mqttc.publish(topic.value, bytes(formatted_msg, encoding='utf8'), qos=0, retain=False)
+        msg_info = mqttc.publish(topic.value, bytes(formatted_msg, encoding='utf8'), qos=0, retain=True)
         unacked_publish.add(msg_info.mid)
         logger.info("Message published to the broker: "+ item)

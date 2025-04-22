@@ -2,5 +2,5 @@
 /Include
 /Lib
 /Scripts
-./log_test*
+log_test.txt
 *.pyc
